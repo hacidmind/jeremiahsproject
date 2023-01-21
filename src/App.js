@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import Footer from './hoc/Footer';
+// import ClassActivityOne from './pages/ClassActivityOne';
+import Navbar from './hoc/Navbar';
+import Home from './pages/Home';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Colors from './components/Colors';
+import User from './pages/User';
+import Blog from './components/Blog';
+import ErrorPage from './pages/ErrorPage';
+import BlogPage from './pages/BlogPage';
+import NewBlog from './pages/NewBlog';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path='/colors' element={<Colors />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/users' element={<User />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/addblog' element={<NewBlog />} />
+        <Route path='/blog/:id' element={<BlogPage />} />
+        <Route path='*' element={<ErrorPage />} />
+
+      </Routes>
+      <Footer />
+    </ Router>
+
   );
 }
 
